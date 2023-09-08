@@ -1,20 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hola mundo!!!</title>
+</head>
+<body>
+  <h1>Hola mundo!!!</h1>
+  <script src="./web_socket_cliente.js"></script>
+</body>
+</html>
 <?php
-
-echo 'Hola mundo!';
-echo PHP_EOL;
-require 'web_socket_cliente_helper.php';
-$WebSocketCliente = new WebSocketCliente();
-(
-  $WebSocketCliente
-  ->enviarJson(
-    [
-      'tipo' => (
-        WebSocketCliente
-        ::MENSAJES_TIPOS_IDS_POR_NOMBRE
-        ['ANALITICA_ESTUDIANTE_PROGRESO_NOTIFICACION_POR_CORREO']
-      ),
-      'usuariosIds' => [1],
-      'mensaje' => 'Hola mundo!!!',
-    ]
-  )
-);

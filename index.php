@@ -1,3 +1,5 @@
+<?php require (__DIR__ . '/constantes.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
 </head>
 <body>
   <h1>Hola mundo!!!</h1>
+  <input value="<?= SERVIDOR_CLIENTE_RUTA ?>" type="hidden" class="jsServidorRuta">
   <script src="./cliente.js"></script>
 </body>
 </html>
-<?php

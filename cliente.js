@@ -1,6 +1,8 @@
 
 (function() {
-  const webSocketCliente = new WebSocket('wss://eduerpj.dev:443');
+  console.clear();
+  console.log('Iniciando servidor en el cliente js');
+  const webSocketCliente = new WebSocket(document.querySelector('.jsServidorRuta').value);
 
   (
     webSocketCliente
@@ -15,8 +17,8 @@
               JSON
               .stringify(
                 {
-                  tipo: window.z.webSocket.mensajeTipos.CONEXION,
-                  sesionId: window.z.sesionId,
+                  tipo: 0,
+                  sesionId: 1,
                 },
               )
             ),
@@ -32,6 +34,7 @@
       'message',
       function(evento) {
         const datos = JSON.parse(evento.data);
+        console.log({datos});
 
         if (datos.tipo === 1) {
           console.log({datos});

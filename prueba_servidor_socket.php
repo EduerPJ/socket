@@ -1,6 +1,6 @@
 <?php
 
-require 'web_socket_cliente_helper.php';
+require 'cliente_socket.php';
 $WebSocketCliente = new WebSocketCliente();
 echo PHP_EOL;
 echo 'Enviando mensaje desde el servidor...';

@@ -1,5 +1,7 @@
 <?php
 require (__DIR__ . '/vendor/autoload.php');
+require (__DIR__ . '/constantes.php');
+
 $mysqli;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -9,14 +11,16 @@ use Ratchet\WebSocket\WsServer;
 
 class WebSocketServidor implements MessageComponentInterface {
   const MENSAJE_TIPO_CONEXION = 0;
-  const PUERTO = 8080;
-  const IP = 'tls://0.0.0.0';
   protected $clientes;
   private $mysqli;
 
   public function __construct($mysqli) {
     $this->clientes = new SplObjectStorage;
     $this->mysqli = $mysqli;
+    echo 'Constructor del WebSocketServidor';
+    echo PHP_EOL;
+    echo __FILE__, ' ', __FUNCTION__;
+    echo PHP_EOL;
   }
 
   public function onOpen(ConnectionInterface $conexion) {
@@ -102,14 +106,14 @@ $servidor = (
   IoServer
   ::factory(
     new HttpServer(new WsServer(new WebSocketServidor($mysqli))),
-    WebSocketServidor::PUERTO,
-    WebSocketServidor::IP
+    PUERTO,
+    IP
   )
 );
 
 echo (
   'Servidor WebSocket iniciado en el puerto ' .
-  WebSocketServidor::PUERTO .
+  PUERTO .
   '!'
 );
 $servidor->run();

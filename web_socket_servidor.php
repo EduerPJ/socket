@@ -96,7 +96,7 @@ class WebSocketServidor implements MessageComponentInterface {
     $conexion->close();
   }
 }
-
+$mysqli = '';
 $servidor = (
   IoServer
   ::factory(

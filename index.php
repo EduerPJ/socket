@@ -7,7 +7,7 @@
 </head>
 <body>
   <h1>Hola mundo!!!</h1>
-  <script src="./web_socket_cliente.js"></script>
+  <script src="./cliente.js"></script>
 </body>
 </html>
 <?php

@@ -1,6 +1,6 @@
 
 (function() {
-  const webSocketCliente = new WebSocket('wss://eduerpj.dev:8080');
+  const webSocketCliente = new WebSocket('wss://eduerpj.dev:443');
 
   (
     webSocketCliente

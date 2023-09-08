@@ -10,6 +10,7 @@ use Ratchet\WebSocket\WsServer;
 class WebSocketServidor implements MessageComponentInterface {
   const MENSAJE_TIPO_CONEXION = 0;
   const PUERTO = 8080;
+  const IP = 'tls://0.0.0.0';
   protected $clientes;
   private $mysqli;
 
@@ -102,7 +103,7 @@ $servidor = (
   ::factory(
     new HttpServer(new WsServer(new WebSocketServidor($mysqli))),
     WebSocketServidor::PUERTO,
-    '127.0.0.1'
+    WebSocketServidor::IP
   )
 );
 

@@ -5,7 +5,7 @@ class WebSocketCliente {
 
   private $webSocketClienteConexion;
 
-  const SERVIDOR_RUTA = 'wss://eduerpj.dev:8080';
+  const SERVIDOR_RUTA = 'wss://eduerpj.dev:443';
   const MENSAJES_TIPOS_IDS_POR_NOMBRE = [
     'ANALITICA_ESTUDIANTE_PROGRESO_NOTIFICACION_POR_CORREO' => 1,
   ];

@@ -1,16 +1,17 @@
 <?php
+
 require (__DIR__ . '/vendor/autoload.php');
 require (__DIR__ . '/constantes.php');
 
-$mysqli;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
+use React\Socket\ConnectorInterface;
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use React\Socket\DnsConnector;
-use React\Socket\TcpConnector;
 use React\Dns\Resolver\Factory;
+use React\Dns\Resolver\ResolverInterface;
 
 class WebSocketServidor implements MessageComponentInterface {
   const MENSAJE_TIPO_CONEXION = 0;
@@ -52,7 +53,7 @@ class WebSocketServidor implements MessageComponentInterface {
                 'FROM ' .
                   'ci_sessions ' .
                 'WHERE ' .
-                  'session_id = ' .
+                'session_id = ' .
                   '"' . $this->mysqli->real_escape_string($sesionId) . '"'
               )
             )->fetch_assoc()
@@ -104,19 +105,16 @@ class WebSocketServidor implements MessageComponentInterface {
     $conexion->close();
   }
 }
-$mysqli = '';
-$servidor = (
-  IoServer
-  ::factory(
-    new HttpServer(new WsServer(new WebSocketServidor($mysqli))),
-    PUERTO,
-    IP
-  )
-);
 
-echo (
-  'Servidor WebSocket iniciado en el puerto ' .
-  PUERTO .
-  '!'
-);
+$mysqli = '';
+
+// Creación del conector DNS
+$dnsConnector = new DnsConnector(new ConnectorInterface(), 'socket.test');
+// Creación del servidor web
+$httpServer = new HttpServer(new WsServer(new WebSocketServidor($mysqli)));
+
+// Creación del servidor socket
+$servidor = IoServer::factory($httpServer, $dnsConnector);
+
+// Inicio del servidor
 $servidor->run();

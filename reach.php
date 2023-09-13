@@ -29,14 +29,17 @@ use React\Dns\Resolver\ResolverInterface;
 
 try {
   $loop = React\EventLoop\Factory::create();
-  $connector = new Connector(['tcp' => false, 'tls' => true, 'unix' => false, 'dns' => false], $loop);
+  $connector = new Connector(
+    $loop,
+    ['tcp' => false, 'tls' => true, 'unix' => false, 'dns' => false]
+  );
 
   $uri = 'tls://socket.test:' . PUERTO;
   $connector->connect($uri)->then(function (ConnectionInterface $connection) {
     echo PHP_EOL;
     echo 'connection successfully established';
     echo PHP_EOL;
-    $connection->write('Conectando...');
+    $connection->write('Enviando...');
     // $connection->end('Finalizada...');
   });
 
@@ -48,8 +51,7 @@ try {
   $loop->run();
 
 } catch (\Throwable $th) {
-  throw $th;
-  var_dump($th); echo '👆👆👆 '; echo '💩💩💩 '; echo '👀'; exit;
+  var_dump($th->getMessage()); echo '👆👆👆 '; echo '💩💩💩 '; echo '👀'; exit;
 }
 
 /* $connector->connect('socket.test:8081')->then(function (ConnectionInterface $connection) {

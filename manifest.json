@@ -1,0 +1,20 @@
+{
+  "name": "Zalvadora",
+  "short_name": "Z",
+  "background_color": "#1976d2",
+  "theme_color": "#1976d2",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icons/16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/chat"
+}

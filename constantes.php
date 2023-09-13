@@ -1,5 +1,5 @@
 <?php
-define('PUERTO', 8080);
-define('IP', 'tls://eduerpj.dev');
-define('DOMINIO', 'eduerpj.dev');
-define('SERVIDOR_CLIENTE_RUTA', 'wss://' . 'eduerpj.dev' . ':' . PUERTO);
+define('PUERTO', 8081);
+define('IP', 'tls://127.0.0.1');
+define('DOMINIO', 'socket.test');
+define('SERVIDOR_CLIENTE_RUTA', 'wss://' . 'socket.test' . ':' . PUERTO);

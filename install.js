@@ -15,7 +15,7 @@
     };
 
     // Muestra el mensaje de instalación cuando sea apropiado
-    self.clients.matchAll().then((clients) => {
+    window.clients.matchAll().then((clients) => {
       if (clients.length === 0 || !clients[0].visibilityState || clients[0].visibilityState === 'hidden') {
         // No se muestra el mensaje si la página no está visible
         return;

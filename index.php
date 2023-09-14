@@ -8,19 +8,18 @@
 </head>
 <body>
   <h1>PWA</h1>
-  <script src="./install.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener("load", () => {
             navigator.serviceWorker.register('service-worker.js')
             .then(function(registration) {
                 console.log('ServiceWorker registered');
-                install();
               }).catch(function(err) {
                 console.log('ServiceWorker error: ', err);
               });
         })
     }
 </script>
+<script src="./install.js"></script>
 </body>
 </html>

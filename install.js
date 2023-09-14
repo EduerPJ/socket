@@ -1,6 +1,6 @@
 // Código para mostrar un mensaje de instalación
-function install() {
-  self.addEventListener('beforeinstallprompt', (event) => {
+  window.addEventListener('load', (event) => {
+    console.log('Preparando msn...');
     // Previene que el evento muestre automáticamente el mensaje de instalación
     event.preventDefault();
 
@@ -34,4 +34,3 @@ function install() {
       });
     });
   });
-}

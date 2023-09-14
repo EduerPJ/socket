@@ -40,7 +40,7 @@ self.addEventListener('beforeinstallprompt', (event) => {
 });
 
 workbox.routing.registerRoute(
-	/.(?:css|js|jsx|json)(?|$)/,
+	/.(?:css|js|jsx|json)$/,
 	new workbox.strategies.StaleWhileRevalidate({
 		"cacheName": "assets",
 		plugins: [

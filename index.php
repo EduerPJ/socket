@@ -20,6 +20,5 @@
         })
     }
 </script>
-<script src="./install.js"></script>
 </body>
 </html>

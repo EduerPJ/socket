@@ -15,22 +15,25 @@
     };
 
     // Muestra el mensaje de instalación cuando sea apropiado
+    // Muestra el mensaje de instalación y espera a la respuesta del usuario
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('El usuario aceptó la instalación de la PWA');
+      } else {
+        console.log('El usuario rechazó la instalación de la PWA');
+      }
+
+      // Borra la referencia al evento
+      deferredPrompt = null;
+    });
+    return;
+    
     window.clients.matchAll().then((clients) => {
       if (clients.length === 0 || !clients[0].visibilityState || clients[0].visibilityState === 'hidden') {
         // No se muestra el mensaje si la página no está visible
         return;
       }
 
-      // Muestra el mensaje de instalación y espera a la respuesta del usuario
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('El usuario aceptó la instalación de la PWA');
-        } else {
-          console.log('El usuario rechazó la instalación de la PWA');
-        }
-
-        // Borra la referencia al evento
-        deferredPrompt = null;
-      });
+      
     });
   });

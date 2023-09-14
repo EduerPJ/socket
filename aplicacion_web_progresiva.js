@@ -13,8 +13,7 @@
           navigator
           .serviceWorker
           .register('trabajadores_de_servicios.js')
-          .then((registros) => {console.log({registros});})
-          .catch((error) => {mostrarVentanaEmergente('', error);})
+          .catch((error) => {console.error(error);})
         );
       },
     )

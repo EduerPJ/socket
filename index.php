@@ -8,15 +8,14 @@
 </head>
 <body>
   <h1>PWA</h1>
+  <script src="./install.js"></script>
   <script>
-    console.log('Iniciando service workers');
     if ('serviceWorker' in navigator) {
-      console.log('Validar si tiene serviceWorker');
       window.addEventListener("load", () => {
-          console.log('js cargado...');
             navigator.serviceWorker.register('service-worker.js')
             .then(function(registration) {
                 console.log('ServiceWorker registered');
+                install();
               }).catch(function(err) {
                 console.log('ServiceWorker error: ', err);
               });

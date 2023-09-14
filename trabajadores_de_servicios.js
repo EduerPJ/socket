@@ -1,25 +1,33 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
-
-const routing = workbox.routing;
-const strategies = workbox.strategies;
-
-workbox.routing.registerRoute(
-	/.(?:css|js|jsx|json)$/,
-	new workbox.strategies.StaleWhileRevalidate({
-		"cacheName": "assets",
-		plugins: [
-			new workbox.expiration.Plugin({
-				maxEntries: 1000,
-				maxAgeSeconds: 31536000
-			})
-		]
-	})
+importScripts(
+	'https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js',
 );
 
-workbox.routing.registerRoute(
+/* const workboxEnrutamiento = workbox.routing;
+const workboxEstrategias = workbox.strategies;
+
+(
+	workboxEnrutamiento
+	.registerRoute(
+		/.(?:css|js|jsx|json)$/,
+		(
+			new workboxEstrategias
+			.StaleWhileRevalidate({
+				'cacheName': 'assets',
+				plugins: [
+					new workbox.expiration.Plugin({
+						maxEntries: 1000,
+						maxAgeSeconds: 31536000
+					})
+				]
+			})
+		)
+	)
+);
+
+workboxEnrutamiento.registerRoute(
 	/.(?:png|jpg|jpeg|gif|woff2)$/,
-	new workbox.strategies.CacheFirst({
-		"cacheName": "images",
+	new workboxEstrategias.CacheFirst({
+		'cacheName': 'images',
 		plugins: [
 			new workbox.expiration.Plugin({
 				maxEntries: 1000,
@@ -29,10 +37,10 @@ workbox.routing.registerRoute(
 	})
 );
 
-workbox.routing.registerRoute(
+workboxEnrutamiento.registerRoute(
 	/(\/)$/,
-	new workbox.strategies.StaleWhileRevalidate({
-		"cacheName": "startPage",
+	new workboxEstrategias.StaleWhileRevalidate({
+		'cacheName': 'startPage',
 		plugins: [
 			new workbox.expiration.Plugin({
 				maxEntries: 1000,
@@ -40,16 +48,16 @@ workbox.routing.registerRoute(
 			})
 		]
 	})
-);
+); */
 
 
-const CACHE = "pwabuilder-page";
+const CACHE = 'pwabuilder-page';
 
-// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
-const offlineFallbackPage = "ToDo-replace-this-name.html";
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = 'offline.html';
+const offlineFallbackPage = 'ToDo-replace-this-name.html';
 
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
 });
